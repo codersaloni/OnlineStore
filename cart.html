@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+    margin: 0px;
+  }
+
+  .main {
+    height: 50px;
+  }
+
+  .navbar {
+    height: 50px;
+    background-color: #2874f0;
+
+    display: flex;
+    padding-left: 300px;
+    padding-right: 300px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .flipkart_logo {
+    width: 100px;
+  }
+
+  .search_logo {
+    width: 22px;
+  }
+
+  input {
+    width: 500px;
+    height: 25px;
+
+    border: solid 1px white;
+  }
+
+  .navbar_rhs {
+    display: flex;
+    gap: 20px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 200px;
+  }
+
+  .search_btn {
+    background-color: white;
+    border: solid 1px white;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+  }
+
+  .products {
+
+    
+    display: grid;
+    grid-template-columns: 300px 300px 300px 300px;
+    justify-content: end;
+
+  }
+
+  #product-img {
+    width: 100px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  #product-rating {
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+
+
+
+  }
+  .cart_product{
+      display: flex;
+      width: 900px;
+      height: 150px;
+      /* border: 1px solid red; */
+      margin-left: 300px;
+        margin-right: 300px;
+        /* margin-top: 80px; */
+        gap: 30px;
+  }
+  .placeorder{
+    height: 50px;
+        font-size: 150%;
+        color: white;
+        border: none;
+        background-color: #ff9f00;
+        margin-left: 300px;
+  }
+  #cart_product_img{
+      height: 100px;
+      width: 50px;
+  }
+  #cart_product_rating{
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+  }
+</style>
+
+<body>
+  <div class="main">
+    <div class="navbar">
+      <div class="logo">
+        <img class="flipkart_logo"
+          src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png" alt="" />
+      </div>
+
+      <div class="search">
+        <input type="text" placeholder="Search for Products, Brands and more" />
+
+        <button  class="search_btn"><img class="search_logo" src="./assets/search.svg" alt="" /></button>
+      </div>
+
+      <div class="navbar_rhs">
+        <div>Sarang</div>
+        <div>More</div>
+        <div>Cart</div>
+      </div>
+    </div>
+    <h1>My Cart</h1>
+    <div class="cart_products"></div>
+
+    <div class="cart_product">
+        <div class="lhs">
+            <div class="image_div"></div>
+        </div>
+        
+        <div class="info_div">
+
+        </div>
+        
+        
+    </div>
+    <button class="placeorder" onclick="orderplaced()">Place Order</button>
+  </div>
+</body>
+
+</html>
+
+<script>
+    var cart_product = JSON.parse(localStorage.getItem("cart_item"))
+
+    var image_div=document.querySelector(".image_div")
+    var img=document.createElement('img')
+    img.src=cart_product.img
+    img.id='cart_product_img'
+image_div.append(img)
+
+var info_div=document.querySelector(".info_div")
+var info=document.createElement('p')
+info.innerText=cart_product.name
+info.id='cart_product_info'
+
+var rating = document.createElement('button')
+    rating.innerText = cart_product.rating
+    rating.id = 'cart_product_rating'
+
+    var price = document.createElement('p')
+    price.innerText = cart_product.price
+    price.id = 'cart_product_price'
+
+
+    info_div.append(info, rating, price)
+
+    function orderplaced(){
+        alert("Your order has been placed!")
+    }
+
+</script>
